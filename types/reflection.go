@@ -306,6 +306,9 @@ func (s *Schemas) readFields(schema *Schema, t reflect.Type) error {
 				schemaField.Default = n
 			case "boolean":
 				schemaField.Default = convert.ToBool(schemaField.Default)
+			case "array[string]":
+				schemaField.Default = convert.ToStringSlice(schemaField.Default)
+				fmt.Printf("\n\nDefault: %v\n\n", schemaField.Default)
 			}
 		}
 
